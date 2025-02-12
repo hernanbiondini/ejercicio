@@ -108,3 +108,17 @@ La base de datos en memoria se crea al iniciar la aplicación y se destruye al d
     "cuit": "20-12345678-9",
     "razonSocial": "Mi Empresa"
   }
+
+# Supuestos y Consideraciones
+## Criterio de “último mes”
+- Se interpretó como el período posterior a la fecha actual menos un mes.
+- Se toman las transferencias o adhesiones ocurridas a partir de `LocalDate.now().minusMonths(1)`.
+## Fecha de Adhesión
+- Se asigna en forma automática en el alta del registro.
+## Transferencias
+- Se agregó el atributo `fechaTransferencia` a la entidad `Transferencia` para poder filtrar según el último mes.
+## Validaciones
+- Se utiliza la anotación `@Valid` en el controlador para realizar validaciones básicas.
+  - Ejemplo: No nulas o de formato.
+  - Definidas en la entidad o en DTOs.
+  - En este caso, se usan directamente las entidades.
